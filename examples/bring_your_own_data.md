@@ -88,9 +88,18 @@ This is the path for anyone who has built a Salesforce report before but doesn't
 
 After downloading, run the rename script in Step 3 below. The script handles the column name differences between Salesforce Reports format and the format the skills expect.
 
-### Step 3: rename columns
+### Step 3: rename columns (optional as of v0.2)
 
-Whichever export method you used in Step 1 or 2, the column names won't match what the skills expect. Run the bundled rename script to fix that automatically:
+As of v0.2, the skills discern column mappings at runtime by reading
+[`docs/column_mapping.md`](../docs/column_mapping.md) and reasoning about
+your export's headers and sample values. You can drop a raw Salesforce export
+into `my_data/` and the skills will figure out which column is which without
+the rename script. The skill prints a Mapping Report at the top of its output
+so the mapping is auditable.
+
+The rename script below is still supported for users who prefer a
+deterministic pre-step, or who want to confirm the mapping before running
+any skill. It is no longer required.
 
 ```bash
 python3 tools/rename_columns.py my_data/opportunities.csv
@@ -140,6 +149,73 @@ Add `my_data/` to your `.gitignore` so you don't accidentally commit Salesforce 
 echo "my_data/" >> .gitignore
 ```
 
+## Optional: activity export (for activity-capture-diagnostic, v0.2)
+
+The `activity-capture-diagnostic` skill reads Salesforce Task and Event records. Export both objects and concatenate them, or run them separately and tell the skill which file is which.
+
+### SOQL (fastest)
+
+```sql
+SELECT Id, Subject, Type, OwnerId, Owner.Name, WhatId, ActivityDate,
+       CreatedDate, Status
+FROM Task
+WHERE ActivityDate >= LAST_N_DAYS:90
+
+SELECT Id, Subject, OwnerId, Owner.Name, WhatId, ActivityDate, CreatedDate
+FROM Event
+WHERE ActivityDate >= LAST_N_DAYS:90
+```
+
+Save the union as `my_data/activities.csv`. The skill's column discernment (`docs/column_mapping.md`) handles header differences; no manual rename required.
+
+### Data Loader
+
+1. Choose **Export** in Data Loader.
+2. Run the export twice, once for **Task** and once for **Event**, with the fields above and a date filter for the last 90 days.
+3. Concatenate the two CSVs (Task plus Event) into `my_data/activities.csv`. The header rows should be identical; remove the second header before saving.
+
+### Salesforce Reports
+
+1. New Report on the **Tasks and Events** report type.
+2. Add columns: Activity ID, Subject, Type, Assigned To Owner, Related To ID, Activity Date, Created Date, Status.
+3. Filter: Activity Date in the last 90 days.
+4. Run, export as CSV, Details Only.
+5. Save as `my_data/activities.csv`.
+
+## Optional: lead export (for lead-routing-rule-analyzer, v0.2)
+
+The `lead-routing-rule-analyzer` skill reads Salesforce Lead records, plus a rep-to-territory roster (which the skill will ask for if absent).
+
+### SOQL (fastest)
+
+```sql
+SELECT Id, LeadSource, CreatedDate, OwnerId, Owner.Name,
+       AssignmentDate__c, First_Touch_Date__c, Status, Territory__c,
+       Segment__c, IsConverted
+FROM Lead
+WHERE CreatedDate >= LAST_N_DAYS:90
+```
+
+If your org does not have `AssignmentDate__c` or `First_Touch_Date__c` custom fields, the skill can fall back to `LeadHistory` for the assignment timestamp (see the SKILL.md Appendix A for the proxy logic). Tell the skill which fallback to use.
+
+Save the result as `my_data/leads.csv`.
+
+### Data Loader
+
+1. Choose **Export** in Data Loader.
+2. Select the **Lead** object.
+3. Add the fields listed in the SOQL above.
+4. Filter on Created Date in the last 90 days.
+5. Save as `my_data/leads.csv`.
+
+### Salesforce Reports
+
+1. New Report on the **Leads** report type.
+2. Add columns: Lead ID, Lead Source, Created Date, Lead Owner, Assignment Date, First Touch Date, Lead Status, Territory, Segment, Converted.
+3. Filter: Created Date in the last 90 days.
+4. Run, export as CSV, Details Only.
+5. Save as `my_data/leads.csv`.
+
 ## Optional: forecast history export
 
 The `forecast-call-prep` skill calibrates rep variance against historical forecast submissions. If your org has a Forecast object (Salesforce Collaborative Forecasting writes to a private API, but most B2B SaaS orgs build a custom Forecast__c object), export it the same way.
@@ -182,7 +258,7 @@ Anonymizing the data first (replacing real rep names with placeholders, scaling 
 
 ## Roadmap
 
-v0.2 will add automatic column mapping at runtime via Claude reasoning, eliminating the need to run the rename script as a separate step. Until then, the manual script in `tools/rename_columns.py` is the recommended path.
+v0.2 ships automatic column mapping at runtime via Claude reasoning, so the rename script in `tools/rename_columns.py` is no longer required. It is kept for users who prefer a deterministic pre-step. The catalog of header tokens and value fingerprints is in [`docs/column_mapping.md`](../docs/column_mapping.md).
 
 ## Troubleshooting
 

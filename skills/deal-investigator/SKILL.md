@@ -42,6 +42,19 @@ Do not invoke for:
 2. **CSV or JSON**: read `opportunities.csv` and identify the target opp by id or name.
 3. **Sample data**: bundled synthetic dataset, with the user providing an opp_id from the dataset.
 
+## Column discernment
+
+Real Salesforce exports rarely match canonical names exactly. Custom suffixes (`__c`), renamed fields, and different cases are normal. Before parsing any data file, read `docs/column_mapping.md` and use it to map the export's actual headers to the canonical fields this skill needs.
+
+Procedure (full detail in `docs/column_mapping.md`):
+
+1. Normalize each header in the export (lowercase, strip `__c`, replace `_` and `.` with space, drop noise tokens).
+2. Score each header by token overlap against the canonical field's `header_tokens`, subtracting for `exclusion_tokens` hits.
+3. Confirm the top candidate with a value fingerprint (pull two or three sample rows and check the values against the catalog's `value_fingerprint`).
+4. If two headers tie above threshold, ask the user one question to disambiguate. If no header passes for a required field, ask the user to name the column. Do not guess.
+
+Note the mapping in a one-line footnote at the bottom of the deal memo: `Mapping: matched N of M required fields from <source>.`
+
 ## Process
 
 ### Step 1: Identify the target opportunity

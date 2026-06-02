@@ -7,7 +7,10 @@ Produces a realistic-looking fake B2B SaaS company dataset:
 - 10 sales reps with varied attributes
 - ~250 opportunities across 6 stages with realistic distributions
 - 12 weeks of historical forecast submissions per rep
-- Activity history on each opportunity
+- Salesforce-style Task/Event activity records with planted under-loggers
+  and phantom-progression opportunities (v0.2)
+- Salesforce-style Lead records with planted orphans, SLA violations, and
+  routing leakage (v0.2)
 
 Design notes:
 - Deterministic via fixed seed so outputs are reproducible
@@ -294,6 +297,292 @@ def generate_quarterly_actuals(opportunities):
     return actuals
 
 # ============================================================================
+# CANARY (v0.2): unique GUID per file, marks the data as synthetic
+# ============================================================================
+
+CANARY_NOTICE = (
+    "SYNTHETIC DEMO DATA for the revops-skills repo. Fabricated. Not for "
+    "training corpora. See data/README in the repo for provenance."
+)
+
+# Hardcoded GUIDs so the canary is deterministic across regenerations.
+CANARY_GUIDS = {
+    "activities": "c14a7117-0a02-4d9e-b3a1-2f7d6e1c9a01",
+    "leads":      "c14a7117-0a02-4d9e-b3a1-2f7d6e1c9a02",
+}
+
+def canary_record(file_kind):
+    return {
+        "guid": CANARY_GUIDS[file_kind],
+        "notice": CANARY_NOTICE,
+        "kind": file_kind,
+    }
+
+# ============================================================================
+# ACTIVITIES (v0.2): Salesforce-style Task and Event records
+# ============================================================================
+
+ACTIVITY_TYPES = ["Call", "Email", "Meeting", "Task"]
+
+ACTIVITY_SUBJECTS = {
+    "Call":    ["Discovery call", "Pricing discussion", "Follow-up call",
+                "Stakeholder intro call", "Renewal touch base",
+                "Executive sponsor call"],
+    "Email":   ["Sent SOW for review", "Sent pricing options",
+                "Follow-up on demo", "Replied to security questions",
+                "Sent mutual close plan", "Sent revised proposal"],
+    "Meeting": ["Onsite product demo", "Technical deep-dive",
+                "Procurement working session", "Executive review",
+                "Implementation planning meeting"],
+    "Task":    ["Log notes from discovery", "Update CRM with stakeholder map",
+                "Prep for next week's QBR", "Send Mutual Action Plan"],
+}
+
+# Median target: ~14 activities per rep per quarter. Under-loggers come in
+# well below that, planted by name. The skill should surface them.
+ACTIVITY_VOLUME_BY_REP = {
+    "rep_001": 22,  # Aisha Okonkwo  - healthy
+    "rep_002": 18,  # Diego Marquez  - healthy
+    "rep_003": 24,  # Priya Raman    - healthy
+    "rep_004": 14,  # Tomas Lindgren - on team median
+    "rep_005": 16,  # Yuki Tanaka    - healthy
+    "rep_006":  4,  # Marcus Bell    - UNDER-LOGGER (planted)
+    "rep_007": 17,  # Sofia Restrepo - healthy
+    "rep_008":  6,  # Hannes Vogel   - UNDER-LOGGER (planted)
+    "rep_009": 20,  # Lakshmi Iyer   - healthy
+    "rep_010":  3,  # Wei Chen       - UNDER-LOGGER (planted)
+}
+
+def generate_activities(opportunities):
+    """
+    Emit Salesforce-style Task/Event records.
+
+    Planted signals the skill should surface:
+    - Three under-loggers: Marcus Bell (rep_006), Hannes Vogel (rep_008),
+      Wei Chen (rep_010), each well below team median.
+    - Phantom progression: pick six opportunities that advanced past
+      Discovery (Proposal or later) and assign them zero activities. The
+      skill should flag stage advancement with no logged activity.
+    """
+    activities = []
+    activity_counter = 1
+
+    # Build owner -> list-of-opps lookup so each rep can log on their own
+    # open deals, and only their own.
+    rep_open_opps = {r["id"]: [] for r in REPS}
+    for o in opportunities:
+        if not o["is_closed"]:
+            rep_open_opps.setdefault(o["owner_id"], []).append(o)
+
+    # Phantom-progression opps: hand-picked first six advanced deals across
+    # several reps so the planted signal is visible without being noisy.
+    advanced_opps = [
+        o for o in opportunities
+        if not o["is_closed"]
+        and o["stage"] in ("Proposal", "Negotiation", "Verbal")
+    ]
+    advanced_opps_sorted = sorted(advanced_opps, key=lambda o: o["id"])
+    phantom_opp_ids = {o["id"] for o in advanced_opps_sorted[:6]}
+
+    for rep in REPS:
+        rep_name = rep["name"]
+        rep_id = rep["id"]
+        volume = ACTIVITY_VOLUME_BY_REP.get(rep_id, 12)
+
+        eligible_opps = [
+            o for o in rep_open_opps.get(rep_id, [])
+            if o["id"] not in phantom_opp_ids
+        ]
+        if not eligible_opps:
+            eligible_opps = rep_open_opps.get(rep_id, [])
+
+        for _ in range(volume):
+            atype = random.choices(
+                ACTIVITY_TYPES, weights=[40, 35, 15, 10]
+            )[0]
+            subject = random.choice(ACTIVITY_SUBJECTS[atype])
+
+            # 80% on a specific opp, 20% account-level (no related opp)
+            if eligible_opps and random.random() < 0.8:
+                related = random.choice(eligible_opps)
+                related_opp_id = related["id"]
+            else:
+                related_opp_id = None
+
+            # Activity date in the last 60 days, created same day or up to 2d later
+            days_ago = random.randint(0, 60)
+            activity_date = (TODAY - timedelta(days=days_ago)).isoformat()[:10]
+            created_date = (
+                TODAY - timedelta(days=days_ago - random.randint(0, 2))
+            ).isoformat()[:10]
+            if created_date > TODAY.isoformat()[:10]:
+                created_date = activity_date
+
+            status = "Completed" if atype != "Task" else random.choice(
+                ["Completed", "Completed", "In Progress", "Not Started"]
+            )
+
+            activities.append({
+                "activity_id": f"act_{activity_counter:05d}",
+                "type": atype,
+                "subject": subject,
+                "owner": rep_name,
+                "related_opportunity_id": related_opp_id,
+                "activity_date": activity_date,
+                "created_date": created_date,
+                "status": status,
+            })
+            activity_counter += 1
+
+    return activities, sorted(phantom_opp_ids)
+
+# ============================================================================
+# LEADS (v0.2): Salesforce-style Lead records
+# ============================================================================
+
+LEAD_SOURCES = ["Web", "Event", "Referral", "Outbound", "Partner"]
+LEAD_STATUSES = ["Open", "Working", "Nurturing", "Qualified", "Disqualified", "Converted"]
+TERRITORIES = ["NAMER-East", "NAMER-West", "NAMER-Central", "EMEA", "APAC", "LATAM"]
+LEAD_SEGMENTS = ["Enterprise", "Mid-Market", "Commercial"]
+
+# Map each rep to their primary territory. The skill should flag leads that
+# get routed to a rep whose territory does not match the lead's territory
+# (routing leakage).
+REP_TERRITORY = {
+    "rep_001": "NAMER-East",     # Aisha Okonkwo  - Enterprise
+    "rep_002": "NAMER-West",     # Diego Marquez  - Enterprise
+    "rep_003": "NAMER-Central",  # Priya Raman    - Mid-Market
+    "rep_004": "NAMER-East",     # Tomas Lindgren - Mid-Market
+    "rep_005": "NAMER-West",     # Yuki Tanaka    - Mid-Market
+    "rep_006": "NAMER-Central",  # Marcus Bell    - Commercial
+    "rep_007": "NAMER-East",     # Sofia Restrepo - Commercial
+    "rep_008": "EMEA",           # Hannes Vogel   - Commercial
+    "rep_009": "APAC",           # Lakshmi Iyer   - Enterprise
+    "rep_010": "LATAM",          # Wei Chen       - Commercial
+}
+
+def generate_leads():
+    """
+    Emit Salesforce-style Lead records.
+
+    Planted signals the skill should surface:
+    - Orphaned leads (no assigned_rep): about 14% of total.
+    - Speed-to-lead SLA violations:
+        creation-to-assignment > 48 hours for about 18% of assigned leads.
+        assignment-to-first-touch > 24 hours for about 22% of assigned leads.
+    - Routing leakage: about 12% of assigned leads have a rep whose
+      territory does not match the lead's territory.
+    - Distribution imbalance: one rep (Diego Marquez, rep_002) receives a
+      disproportionate share of assigned leads relative to team headcount.
+    """
+    leads = []
+    total_leads = 180
+
+    # Reverse lookup: territory -> reps that own it.
+    territory_to_reps = {}
+    for rep_id, terr in REP_TERRITORY.items():
+        territory_to_reps.setdefault(terr, []).append(rep_id)
+
+    # Imbalance weights: Diego Marquez (rep_002) gets a disproportionate
+    # share when the matching-territory pool includes them; otherwise
+    # equal odds.
+    REP_WEIGHT = {r["id"]: 1 for r in REPS}
+    REP_WEIGHT["rep_002"] = 5
+
+    for i in range(1, total_leads + 1):
+        lead_id = f"lead_{i:04d}"
+
+        created_days_ago = random.randint(0, 90)
+        created_date = (TODAY - timedelta(days=created_days_ago)).isoformat()[:10]
+        source = random.choice(LEAD_SOURCES)
+        territory = random.choice(TERRITORIES)
+        segment = random.choice(LEAD_SEGMENTS)
+
+        # ~14% orphaned (no assigned rep)
+        if random.random() < 0.14:
+            assigned_rep = None
+            assignment_date = None
+            first_touch_date = None
+            status = random.choice(["Open", "Open", "Nurturing"])
+            converted = False
+        else:
+            # Default path: assign a rep whose territory matches the lead's
+            # territory, weighted by REP_WEIGHT (planted Diego imbalance).
+            # ~12% leakage path: deliberately assign a mismatched rep.
+            if random.random() < 0.12:
+                mismatch_reps = [
+                    r["id"] for r in REPS
+                    if REP_TERRITORY.get(r["id"]) != territory
+                ]
+                weights = [REP_WEIGHT[rid] for rid in mismatch_reps]
+                assigned_rep_id = random.choices(mismatch_reps, weights=weights)[0]
+            else:
+                matching_reps = territory_to_reps.get(territory, [])
+                if matching_reps:
+                    weights = [REP_WEIGHT[rid] for rid in matching_reps]
+                    assigned_rep_id = random.choices(matching_reps, weights=weights)[0]
+                else:
+                    # No rep owns this territory; assignment leaks by necessity.
+                    all_ids = [r["id"] for r in REPS]
+                    weights = [REP_WEIGHT[rid] for rid in all_ids]
+                    assigned_rep_id = random.choices(all_ids, weights=weights)[0]
+
+            assigned_rep_name = next(
+                r["name"] for r in REPS if r["id"] == assigned_rep_id
+            )
+            assigned_rep = assigned_rep_name
+
+            # Creation-to-assignment speed
+            if random.random() < 0.18:
+                # SLA violation: 3 to 14 days delay
+                assign_delay_hours = random.randint(72, 14 * 24)
+            else:
+                # Healthy: under 48 hours
+                assign_delay_hours = random.randint(0, 47)
+            assignment_dt = (
+                datetime.fromisoformat(created_date) +
+                timedelta(hours=assign_delay_hours)
+            )
+            if assignment_dt > TODAY:
+                assignment_dt = TODAY
+            assignment_date = assignment_dt.isoformat()[:10]
+
+            # Assignment-to-first-touch speed (some leads never touched)
+            if random.random() < 0.08:
+                first_touch_date = None
+            else:
+                if random.random() < 0.22:
+                    # SLA violation: 2 to 10 days
+                    touch_delay_hours = random.randint(48, 10 * 24)
+                else:
+                    touch_delay_hours = random.randint(0, 23)
+                first_touch_dt = assignment_dt + timedelta(hours=touch_delay_hours)
+                if first_touch_dt > TODAY:
+                    first_touch_dt = TODAY
+                first_touch_date = first_touch_dt.isoformat()[:10]
+
+            status = random.choices(
+                ["Open", "Working", "Nurturing", "Qualified", "Disqualified", "Converted"],
+                weights=[15, 30, 20, 15, 12, 8],
+            )[0]
+            converted = (status == "Converted")
+
+        leads.append({
+            "lead_id": lead_id,
+            "source": source,
+            "created_date": created_date,
+            "assigned_rep": assigned_rep,
+            "assignment_date": assignment_date,
+            "first_touch_date": first_touch_date,
+            "status": status,
+            "territory": territory,
+            "segment": segment,
+            "converted": converted,
+        })
+
+    return leads
+
+# ============================================================================
 # MAIN
 # ============================================================================
 
@@ -303,6 +592,8 @@ def main():
     opportunities = generate_pipeline()
     forecast_history = generate_forecast_history(opportunities)
     actuals = generate_quarterly_actuals(opportunities)
+    activities, phantom_opp_ids = generate_activities(opportunities)
+    leads = generate_leads()
 
     # Write company.json
     with open(OUTPUT_DIR / "company.json", "w") as f:
@@ -330,12 +621,48 @@ def main():
     with open(OUTPUT_DIR / "quarterly_actuals.json", "w") as f:
         json.dump(actuals, f, indent=2)
 
+    # ------------------------------------------------------------------
+    # Activities (v0.2). JSON is wrapped with a canary header. CSV has a
+    # comment-style first line carrying the same canary; skills should skip
+    # any line beginning with '#' before parsing the CSV header.
+    # ------------------------------------------------------------------
+    activities_canary = canary_record("activities")
+    with open(OUTPUT_DIR / "activities.json", "w") as f:
+        json.dump({"_canary": activities_canary, "records": activities}, f, indent=2)
+
+    with open(OUTPUT_DIR / "activities.csv", "w", newline="") as f:
+        f.write(
+            f"# _canary guid={activities_canary['guid']} "
+            f"notice=\"{activities_canary['notice']}\"\n"
+        )
+        writer = csv.DictWriter(f, fieldnames=activities[0].keys())
+        writer.writeheader()
+        writer.writerows(activities)
+
+    # ------------------------------------------------------------------
+    # Leads (v0.2). Same canary pattern as activities.
+    # ------------------------------------------------------------------
+    leads_canary = canary_record("leads")
+    with open(OUTPUT_DIR / "leads.json", "w") as f:
+        json.dump({"_canary": leads_canary, "records": leads}, f, indent=2)
+
+    with open(OUTPUT_DIR / "leads.csv", "w", newline="") as f:
+        f.write(
+            f"# _canary guid={leads_canary['guid']} "
+            f"notice=\"{leads_canary['notice']}\"\n"
+        )
+        writer = csv.DictWriter(f, fieldnames=leads[0].keys())
+        writer.writeheader()
+        writer.writerows(leads)
+
     # Summary
     print(f"  Reps:                 {len(REPS)}")
     print(f"  Opportunities:        {len(opportunities)}")
     print(f"  Open pipeline value:  ${sum(o['amount'] for o in opportunities if not o['is_closed']):,}")
     print(f"  Closed won (qtd):     ${sum(o['amount'] for o in opportunities if o['is_won']):,}")
     print(f"  Forecast history:     {len(forecast_history)} weekly submissions")
+    print(f"  Activities:           {len(activities)} (phantom-progression opps: {len(phantom_opp_ids)})")
+    print(f"  Leads:                {len(leads)} ({sum(1 for l in leads if l['assigned_rep'] is None)} orphaned)")
     print(f"  Output:               {OUTPUT_DIR}/")
 
 if __name__ == "__main__":

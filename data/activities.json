@@ -1,0 +1,1449 @@
+{
+  "_canary": {
+    "guid": "c14a7117-0a02-4d9e-b3a1-2f7d6e1c9a01",
+    "notice": "SYNTHETIC DEMO DATA for the revops-skills repo. Fabricated. Not for training corpora. See data/README in the repo for provenance.",
+    "kind": "activities"
+  },
+  "records": [
+    {
+      "activity_id": "act_00001",
+      "type": "Meeting",
+      "subject": "Executive review",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0007",
+      "activity_date": "2026-04-20",
+      "created_date": "2026-04-22",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00002",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0023",
+      "activity_date": "2026-04-24",
+      "created_date": "2026-04-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00003",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0012",
+      "activity_date": "2026-03-23",
+      "created_date": "2026-03-25",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00004",
+      "type": "Task",
+      "subject": "Log notes from discovery",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0003",
+      "activity_date": "2026-05-14",
+      "created_date": "2026-05-14",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00005",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-29",
+      "created_date": "2026-04-29",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00006",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-11",
+      "created_date": "2026-05-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00007",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0012",
+      "activity_date": "2026-05-05",
+      "created_date": "2026-05-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00008",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0007",
+      "activity_date": "2026-04-01",
+      "created_date": "2026-04-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00009",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0017",
+      "activity_date": "2026-04-28",
+      "created_date": "2026-04-30",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00010",
+      "type": "Meeting",
+      "subject": "Implementation planning meeting",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0018",
+      "activity_date": "2026-04-04",
+      "created_date": "2026-04-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00011",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-16",
+      "created_date": "2026-04-17",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00012",
+      "type": "Meeting",
+      "subject": "Executive review",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-08",
+      "created_date": "2026-04-08",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00013",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0022",
+      "activity_date": "2026-05-14",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00014",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0016",
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00015",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0018",
+      "activity_date": "2026-04-12",
+      "created_date": "2026-04-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00016",
+      "type": "Task",
+      "subject": "Send Mutual Action Plan",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0011",
+      "activity_date": "2026-05-16",
+      "created_date": "2026-05-16",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00017",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0024",
+      "activity_date": "2026-04-09",
+      "created_date": "2026-04-10",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00018",
+      "type": "Call",
+      "subject": "Executive sponsor call",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-09",
+      "created_date": "2026-04-10",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00019",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0011",
+      "activity_date": "2026-05-12",
+      "created_date": "2026-05-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00020",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0011",
+      "activity_date": "2026-04-23",
+      "created_date": "2026-04-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00021",
+      "type": "Email",
+      "subject": "Sent SOW for review",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-25",
+      "created_date": "2026-04-27",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00022",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Aisha Okonkwo",
+      "related_opportunity_id": "opp_0022",
+      "activity_date": "2026-04-28",
+      "created_date": "2026-04-30",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00023",
+      "type": "Meeting",
+      "subject": "Executive review",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0030",
+      "activity_date": "2026-04-26",
+      "created_date": "2026-04-27",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00024",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0029",
+      "activity_date": "2026-05-16",
+      "created_date": "2026-05-17",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00025",
+      "type": "Email",
+      "subject": "Sent SOW for review",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-18",
+      "created_date": "2026-04-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00026",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0033",
+      "activity_date": "2026-05-02",
+      "created_date": "2026-05-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00027",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0044",
+      "activity_date": "2026-03-29",
+      "created_date": "2026-03-30",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00028",
+      "type": "Meeting",
+      "subject": "Executive review",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0044",
+      "activity_date": "2026-03-31",
+      "created_date": "2026-04-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00029",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0040",
+      "activity_date": "2026-05-08",
+      "created_date": "2026-05-09",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00030",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0040",
+      "activity_date": "2026-04-15",
+      "created_date": "2026-04-16",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00031",
+      "type": "Task",
+      "subject": "Prep for next week's QBR",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": null,
+      "activity_date": "2026-03-21",
+      "created_date": "2026-03-23",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00032",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-17",
+      "created_date": "2026-04-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00033",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0042",
+      "activity_date": "2026-04-28",
+      "created_date": "2026-04-29",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00034",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-10",
+      "created_date": "2026-04-11",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00035",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-12",
+      "created_date": "2026-05-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00036",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0042",
+      "activity_date": "2026-05-18",
+      "created_date": "2026-05-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00037",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0040",
+      "activity_date": "2026-05-11",
+      "created_date": "2026-05-13",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00038",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0029",
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00039",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0038",
+      "activity_date": "2026-04-02",
+      "created_date": "2026-04-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00040",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Diego Marquez",
+      "related_opportunity_id": "opp_0042",
+      "activity_date": "2026-04-15",
+      "created_date": "2026-04-17",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00041",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0061",
+      "activity_date": "2026-04-22",
+      "created_date": "2026-04-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00042",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0057",
+      "activity_date": "2026-05-08",
+      "created_date": "2026-05-08",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00043",
+      "type": "Email",
+      "subject": "Sent SOW for review",
+      "owner": "Priya Raman",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-19",
+      "created_date": "2026-05-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00044",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0055",
+      "activity_date": "2026-05-10",
+      "created_date": "2026-05-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00045",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0067",
+      "activity_date": "2026-03-28",
+      "created_date": "2026-03-28",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00046",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0054",
+      "activity_date": "2026-05-20",
+      "created_date": "2026-05-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00047",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Priya Raman",
+      "related_opportunity_id": null,
+      "activity_date": "2026-03-30",
+      "created_date": "2026-04-01",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00048",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0052",
+      "activity_date": "2026-05-19",
+      "created_date": "2026-05-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00049",
+      "type": "Call",
+      "subject": "Executive sponsor call",
+      "owner": "Priya Raman",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-21",
+      "created_date": "2026-04-23",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00050",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0057",
+      "activity_date": "2026-04-22",
+      "created_date": "2026-04-23",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00051",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Priya Raman",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-13",
+      "created_date": "2026-04-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00052",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0046",
+      "activity_date": "2026-04-02",
+      "created_date": "2026-04-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00053",
+      "type": "Email",
+      "subject": "Sent SOW for review",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0065",
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00054",
+      "type": "Task",
+      "subject": "Log notes from discovery",
+      "owner": "Priya Raman",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-04",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00055",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0067",
+      "activity_date": "2026-03-23",
+      "created_date": "2026-03-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00056",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0050",
+      "activity_date": "2026-04-16",
+      "created_date": "2026-04-17",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00057",
+      "type": "Email",
+      "subject": "Sent SOW for review",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0047",
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-04",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00058",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Priya Raman",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-23",
+      "created_date": "2026-04-25",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00059",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0069",
+      "activity_date": "2026-04-14",
+      "created_date": "2026-04-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00060",
+      "type": "Meeting",
+      "subject": "Technical deep-dive",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0054",
+      "activity_date": "2026-05-01",
+      "created_date": "2026-05-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00061",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0066",
+      "activity_date": "2026-04-16",
+      "created_date": "2026-04-16",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00062",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0061",
+      "activity_date": "2026-04-02",
+      "created_date": "2026-04-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00063",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0048",
+      "activity_date": "2026-04-07",
+      "created_date": "2026-04-07",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00064",
+      "type": "Email",
+      "subject": "Sent SOW for review",
+      "owner": "Priya Raman",
+      "related_opportunity_id": "opp_0049",
+      "activity_date": "2026-04-20",
+      "created_date": "2026-04-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00065",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0086",
+      "activity_date": "2026-05-12",
+      "created_date": "2026-05-13",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00066",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0081",
+      "activity_date": "2026-05-14",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00067",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0087",
+      "activity_date": "2026-04-19",
+      "created_date": "2026-04-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00068",
+      "type": "Call",
+      "subject": "Executive sponsor call",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0072",
+      "activity_date": "2026-04-23",
+      "created_date": "2026-04-25",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00069",
+      "type": "Meeting",
+      "subject": "Onsite product demo",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0093",
+      "activity_date": "2026-04-19",
+      "created_date": "2026-04-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00070",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0086",
+      "activity_date": "2026-04-28",
+      "created_date": "2026-04-29",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00071",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-02",
+      "created_date": "2026-05-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00072",
+      "type": "Meeting",
+      "subject": "Implementation planning meeting",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0073",
+      "activity_date": "2026-03-23",
+      "created_date": "2026-03-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00073",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0081",
+      "activity_date": "2026-03-25",
+      "created_date": "2026-03-26",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00074",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0091",
+      "activity_date": "2026-04-09",
+      "created_date": "2026-04-09",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00075",
+      "type": "Call",
+      "subject": "Executive sponsor call",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0085",
+      "activity_date": "2026-03-29",
+      "created_date": "2026-03-31",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00076",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0085",
+      "activity_date": "2026-04-16",
+      "created_date": "2026-04-17",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00077",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0093",
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00078",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Tomas Lindgren",
+      "related_opportunity_id": "opp_0074",
+      "activity_date": "2026-03-29",
+      "created_date": "2026-03-31",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00079",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0103",
+      "activity_date": "2026-05-03",
+      "created_date": "2026-05-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00080",
+      "type": "Meeting",
+      "subject": "Executive review",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0118",
+      "activity_date": "2026-04-25",
+      "created_date": "2026-04-27",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00081",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0104",
+      "activity_date": "2026-03-31",
+      "created_date": "2026-04-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00082",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0100",
+      "activity_date": "2026-05-14",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00083",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-24",
+      "created_date": "2026-04-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00084",
+      "type": "Task",
+      "subject": "Log notes from discovery",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0101",
+      "activity_date": "2026-04-06",
+      "created_date": "2026-04-07",
+      "status": "In Progress"
+    },
+    {
+      "activity_id": "act_00085",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0098",
+      "activity_date": "2026-05-09",
+      "created_date": "2026-05-10",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00086",
+      "type": "Task",
+      "subject": "Update CRM with stakeholder map",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0107",
+      "activity_date": "2026-03-30",
+      "created_date": "2026-03-31",
+      "status": "Not Started"
+    },
+    {
+      "activity_id": "act_00087",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0121",
+      "activity_date": "2026-03-22",
+      "created_date": "2026-03-22",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00088",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0101",
+      "activity_date": "2026-04-12",
+      "created_date": "2026-04-14",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00089",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": null,
+      "activity_date": "2026-03-25",
+      "created_date": "2026-03-26",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00090",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-03",
+      "created_date": "2026-05-03",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00091",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0100",
+      "activity_date": "2026-04-16",
+      "created_date": "2026-04-16",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00092",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0095",
+      "activity_date": "2026-05-05",
+      "created_date": "2026-05-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00093",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-23",
+      "created_date": "2026-04-25",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00094",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Yuki Tanaka",
+      "related_opportunity_id": "opp_0121",
+      "activity_date": "2026-05-14",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00095",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Marcus Bell",
+      "related_opportunity_id": "opp_0145",
+      "activity_date": "2026-04-12",
+      "created_date": "2026-04-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00096",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Marcus Bell",
+      "related_opportunity_id": "opp_0127",
+      "activity_date": "2026-05-07",
+      "created_date": "2026-05-09",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00097",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Marcus Bell",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-30",
+      "created_date": "2026-05-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00098",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Marcus Bell",
+      "related_opportunity_id": "opp_0126",
+      "activity_date": "2026-04-19",
+      "created_date": "2026-04-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00099",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0159",
+      "activity_date": "2026-05-19",
+      "created_date": "2026-05-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00100",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0159",
+      "activity_date": "2026-04-05",
+      "created_date": "2026-04-06",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00101",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-02",
+      "created_date": "2026-05-04",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00102",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0175",
+      "activity_date": "2026-04-21",
+      "created_date": "2026-04-21",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00103",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0157",
+      "activity_date": "2026-04-02",
+      "created_date": "2026-04-02",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00104",
+      "type": "Meeting",
+      "subject": "Implementation planning meeting",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0159",
+      "activity_date": "2026-05-12",
+      "created_date": "2026-05-14",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00105",
+      "type": "Meeting",
+      "subject": "Technical deep-dive",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0156",
+      "activity_date": "2026-05-06",
+      "created_date": "2026-05-07",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00106",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0159",
+      "activity_date": "2026-05-13",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00107",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0162",
+      "activity_date": "2026-05-03",
+      "created_date": "2026-05-04",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00108",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-18",
+      "created_date": "2026-04-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00109",
+      "type": "Call",
+      "subject": "Executive sponsor call",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0159",
+      "activity_date": "2026-04-26",
+      "created_date": "2026-04-28",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00110",
+      "type": "Call",
+      "subject": "Executive sponsor call",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0163",
+      "activity_date": "2026-04-26",
+      "created_date": "2026-04-27",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00111",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-19",
+      "created_date": "2026-05-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00112",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-06",
+      "created_date": "2026-04-08",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00113",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0171",
+      "activity_date": "2026-05-12",
+      "created_date": "2026-05-13",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00114",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0157",
+      "activity_date": "2026-05-11",
+      "created_date": "2026-05-11",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00115",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Sofia Restrepo",
+      "related_opportunity_id": "opp_0164",
+      "activity_date": "2026-03-29",
+      "created_date": "2026-03-29",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00116",
+      "type": "Meeting",
+      "subject": "Technical deep-dive",
+      "owner": "Hannes Vogel",
+      "related_opportunity_id": "opp_0186",
+      "activity_date": "2026-04-03",
+      "created_date": "2026-04-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00117",
+      "type": "Task",
+      "subject": "Send Mutual Action Plan",
+      "owner": "Hannes Vogel",
+      "related_opportunity_id": "opp_0197",
+      "activity_date": "2026-05-16",
+      "created_date": "2026-05-16",
+      "status": "In Progress"
+    },
+    {
+      "activity_id": "act_00118",
+      "type": "Email",
+      "subject": "Replied to security questions",
+      "owner": "Hannes Vogel",
+      "related_opportunity_id": "opp_0181",
+      "activity_date": "2026-05-07",
+      "created_date": "2026-05-07",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00119",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Hannes Vogel",
+      "related_opportunity_id": "opp_0183",
+      "activity_date": "2026-04-08",
+      "created_date": "2026-04-10",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00120",
+      "type": "Meeting",
+      "subject": "Procurement working session",
+      "owner": "Hannes Vogel",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-08",
+      "created_date": "2026-04-08",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00121",
+      "type": "Email",
+      "subject": "Sent revised proposal",
+      "owner": "Hannes Vogel",
+      "related_opportunity_id": null,
+      "activity_date": "2026-05-09",
+      "created_date": "2026-05-09",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00122",
+      "type": "Meeting",
+      "subject": "Executive review",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0211",
+      "activity_date": "2026-03-25",
+      "created_date": "2026-03-27",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00123",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0202",
+      "activity_date": "2026-03-31",
+      "created_date": "2026-04-01",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00124",
+      "type": "Call",
+      "subject": "Stakeholder intro call",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0210",
+      "activity_date": "2026-04-11",
+      "created_date": "2026-04-12",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00125",
+      "type": "Meeting",
+      "subject": "Implementation planning meeting",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": null,
+      "activity_date": "2026-04-14",
+      "created_date": "2026-04-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00126",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0203",
+      "activity_date": "2026-04-07",
+      "created_date": "2026-04-09",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00127",
+      "type": "Call",
+      "subject": "Renewal touch base",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0215",
+      "activity_date": "2026-05-18",
+      "created_date": "2026-05-18",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00128",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0222",
+      "activity_date": "2026-05-06",
+      "created_date": "2026-05-08",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00129",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0210",
+      "activity_date": "2026-05-16",
+      "created_date": "2026-05-18",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00130",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0216",
+      "activity_date": "2026-04-01",
+      "created_date": "2026-04-01",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00131",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0218",
+      "activity_date": "2026-03-29",
+      "created_date": "2026-03-29",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00132",
+      "type": "Meeting",
+      "subject": "Onsite product demo",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0200",
+      "activity_date": "2026-05-14",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00133",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0202",
+      "activity_date": "2026-05-09",
+      "created_date": "2026-05-09",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00134",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0216",
+      "activity_date": "2026-04-30",
+      "created_date": "2026-05-01",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00135",
+      "type": "Meeting",
+      "subject": "Onsite product demo",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0202",
+      "activity_date": "2026-04-02",
+      "created_date": "2026-04-04",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00136",
+      "type": "Email",
+      "subject": "Sent mutual close plan",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0200",
+      "activity_date": "2026-05-19",
+      "created_date": "2026-05-19",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00137",
+      "type": "Email",
+      "subject": "Sent pricing options",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0213",
+      "activity_date": "2026-03-22",
+      "created_date": "2026-03-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00138",
+      "type": "Email",
+      "subject": "Follow-up on demo",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0218",
+      "activity_date": "2026-05-15",
+      "created_date": "2026-05-15",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00139",
+      "type": "Meeting",
+      "subject": "Technical deep-dive",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0207",
+      "activity_date": "2026-05-19",
+      "created_date": "2026-05-20",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00140",
+      "type": "Call",
+      "subject": "Discovery call",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0203",
+      "activity_date": "2026-05-04",
+      "created_date": "2026-05-05",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00141",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Lakshmi Iyer",
+      "related_opportunity_id": "opp_0211",
+      "activity_date": "2026-04-07",
+      "created_date": "2026-04-07",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00142",
+      "type": "Task",
+      "subject": "Log notes from discovery",
+      "owner": "Wei Chen",
+      "related_opportunity_id": "opp_0227",
+      "activity_date": "2026-04-22",
+      "created_date": "2026-04-24",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00143",
+      "type": "Call",
+      "subject": "Follow-up call",
+      "owner": "Wei Chen",
+      "related_opportunity_id": "opp_0229",
+      "activity_date": "2026-05-05",
+      "created_date": "2026-05-07",
+      "status": "Completed"
+    },
+    {
+      "activity_id": "act_00144",
+      "type": "Call",
+      "subject": "Pricing discussion",
+      "owner": "Wei Chen",
+      "related_opportunity_id": "opp_0244",
+      "activity_date": "2026-04-25",
+      "created_date": "2026-04-26",
+      "status": "Completed"
+    }
+  ]
+}

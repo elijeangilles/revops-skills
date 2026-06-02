@@ -39,11 +39,24 @@ If the user wants something narrower, recommend the specific remediation skill a
 2. **CSV or JSON**: parse `opportunities.csv`, `forecast_history.csv`, and `quarterly_actuals.json` matching the schema in `docs/data_schema.md`.
 3. **Sample data**: bundled synthetic dataset at `data/` in this repo.
 
+## Column discernment
+
+Real Salesforce exports rarely match canonical names exactly. Custom suffixes (`__c`), renamed fields, and different cases are normal. Before parsing any data file, read `docs/column_mapping.md` and use it to map the export's actual headers to the canonical fields this skill needs.
+
+Procedure (full detail in `docs/column_mapping.md`):
+
+1. Normalize each header in the export (lowercase, strip `__c`, replace `_` and `.` with space, drop noise tokens).
+2. Score each header by token overlap against the canonical field's `header_tokens`, subtracting for `exclusion_tokens` hits.
+3. Confirm the top candidate with a value fingerprint (pull two or three sample rows and check the values against the catalog's `value_fingerprint`).
+4. If two headers tie above threshold, ask the user one question to disambiguate. If no header passes for a required field, ask the user to name the column. Do not guess.
+
+Print a Mapping Report at the very top of the audit output. List each canonical field, the chosen export header, and the match outcome (matched, ambiguous, unmapped). The audit's grades depend on the mapping, so the mapping must be auditable.
+
 ## Process
 
 ### Step 1: Acquire data
 
-Pull all opportunities (open and closed-this-quarter), forecast history (12 weeks), and rep metadata.
+Pull all opportunities (open and closed-this-quarter), forecast history (12 weeks), and rep metadata. If lead data is available in the source (Salesforce Lead object, or `leads.csv` / `leads.json`), pull it as well: the Pipeline Health dimension uses it to decide whether to recommend `lead-routing-rule-analyzer` when coverage is thin.
 
 ### Step 2: Score the five dimensions
 
@@ -60,6 +73,8 @@ Starts at 100. Subtract:
 
 Recommends: `pipeline-hygiene-audit` if score is below 80.
 
+Recommends: `lead-routing-rule-analyzer` if pipeline coverage is below 2.5x committed forecast AND lead data is available (the upstream bottleneck may be lead routing, not deal execution).
+
 **Dimension 2: Data Quality (weight: 20%)**
 
 Starts at 100. Subtract:
@@ -70,6 +85,8 @@ Starts at 100. Subtract:
 - 10 points if more than 10% have probability values that mismatch their stage by 25+ points
 
 Recommends: `pipeline-hygiene-audit` if score is below 85.
+
+Recommends: `activity-capture-diagnostic` if more than 20% of open opportunities have stale activity, regardless of overall Data Quality score (the audit sees aggregate staleness; the diagnostic identifies under-loggers and phantom progression by rep and by opp).
 
 **Dimension 3: Forecast Hygiene (weight: 25%)**
 
@@ -99,7 +116,9 @@ Starts at 100. Subtract:
 - 10 points if multiple owners are still listed as active on inactive opportunities
 - 10 points if forecast category and stage are misaligned for more than 10% of open opps
 
-Recommends: a v0.2 skill (process-integrity-audit, planned) if score is below 80. For v0.1, surface the findings but note the dedicated remediation skill is forthcoming.
+Recommends: `activity-capture-diagnostic` when the stage-progression-without-activity or probability-stage-mismatch flags fire. The dedicated diagnostic produces per-rep capture rates and per-opp phantom flags that the audit can only see in aggregate.
+
+Recommends: a v0.3 skill (process-integrity-audit, planned) if score is below 80 and the activity-capture diagnostic has already been run. For v0.2, surface the findings but note the dedicated process-integrity remediation skill is forthcoming.
 
 ### Step 3: Compute the overall grade
 
@@ -178,13 +197,18 @@ the lowest-scoring dimension and produces a concrete deliverable.
 
 ## What the audit cannot tell you
 
-This audit measures system health based on data already in Salesforce. It cannot 
-diagnose:
-- Activity capture failures (Einstein Activity Capture, Outreach sync gaps): a 
-  dedicated `activity-capture-diagnostic` skill is planned for v0.2.
-- Lead routing logic issues (LeanData, Salesforce Assignment Rules): planned 
-  for v0.2.
-- Compensation calculation errors: planned for v0.2.
+This audit measures system health based on data already in Salesforce. It surfaces 
+patterns at the team and dimension level. For deeper diagnostics on specific 
+subsystems, the pack now ships dedicated skills:
+- Activity capture failures (Einstein Activity Capture, Outreach sync gaps, 
+  under-loggers, phantom progression): use `activity-capture-diagnostic` for a 
+  per-rep and per-opp view.
+- Lead routing logic issues (LeanData, Salesforce Assignment Rules, orphaned 
+  leads, speed-to-lead SLA violations, routing leakage): use 
+  `lead-routing-rule-analyzer` for a graded routing health report.
+- Compensation calculation errors: planned for v0.3.
+- Process-integrity remediation beyond the aggregate signals scored in 
+  Dimension 5: planned for v0.3.
 - Whether reps actually know how to use the system: human conversation only.
 
 ## Re-run cadence
