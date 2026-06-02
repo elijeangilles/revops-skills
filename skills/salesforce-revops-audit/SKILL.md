@@ -39,6 +39,19 @@ If the user wants something narrower, recommend the specific remediation skill a
 2. **CSV or JSON**: parse `opportunities.csv`, `forecast_history.csv`, and `quarterly_actuals.json` matching the schema in `docs/data_schema.md`.
 3. **Sample data**: bundled synthetic dataset at `data/` in this repo.
 
+## Column discernment
+
+Real Salesforce exports rarely match canonical names exactly. Custom suffixes (`__c`), renamed fields, and different cases are normal. Before parsing any data file, read `docs/column_mapping.md` and use it to map the export's actual headers to the canonical fields this skill needs.
+
+Procedure (full detail in `docs/column_mapping.md`):
+
+1. Normalize each header in the export (lowercase, strip `__c`, replace `_` and `.` with space, drop noise tokens).
+2. Score each header by token overlap against the canonical field's `header_tokens`, subtracting for `exclusion_tokens` hits.
+3. Confirm the top candidate with a value fingerprint (pull two or three sample rows and check the values against the catalog's `value_fingerprint`).
+4. If two headers tie above threshold, ask the user one question to disambiguate. If no header passes for a required field, ask the user to name the column. Do not guess.
+
+Print a Mapping Report at the very top of the audit output. List each canonical field, the chosen export header, and the match outcome (matched, ambiguous, unmapped). The audit's grades depend on the mapping, so the mapping must be auditable.
+
 ## Process
 
 ### Step 1: Acquire data

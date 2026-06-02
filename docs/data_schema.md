@@ -8,6 +8,8 @@ Skills in this repo accept data from three sources, in order of preference:
 
 You provide nothing back to the maintainer. The skills run entirely on the user's machine against the user's own data. No credentials, no telemetry, no phone-home.
 
+The schemas below are canonical. Real Salesforce exports rarely match these names exactly (custom suffixes, renamed fields, different cases). As of v0.2, each skill discerns column mappings at runtime by reasoning against the catalog in [`column_mapping.md`](column_mapping.md), so you can drop a raw export into `data/` or `my_data/` without renaming columns. Use the canonical names below as the reference for what each skill needs, not as a hard requirement for your file headers.
+
 ## opportunities
 
 One row per opportunity. CSV column names or JSON field names must match exactly.
@@ -46,6 +48,42 @@ Weekly per-rep forecast submissions, used by `forecast-call-prep` for calibratio
 | pipeline_amount | number | yes | USD |
 
 Minimum 8 weeks of history is recommended for credible calibration. Skills will warn if less than 8 weeks is provided.
+
+## activities
+
+One row per Salesforce Task or Event record. Used by `activity-capture-diagnostic`.
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| activity_id | string | yes | unique identifier |
+| type | string | yes | one of: Call, Email, Meeting, Task |
+| subject | string | no | free-text subject line |
+| owner | string | yes | rep display name, must match opportunities.owner_name |
+| related_opportunity_id | string | no | references opportunities.id; null for account-level activity |
+| activity_date | string | yes | ISO date (YYYY-MM-DD) |
+| created_date | string | yes | ISO date |
+| status | string | no | one of: Completed, Open, Not Started, In Progress |
+
+The bundled CSV starts with a `#`-prefixed comment line carrying a canary GUID marking the file as synthetic demo data. Skills should skip leading `#`-prefixed lines before parsing the CSV header. The JSON form wraps the records in an object: `{"_canary": {...}, "records": [...]}`. Skills should look for a `records` key first; if absent, treat the document as a flat list.
+
+## leads
+
+One row per Salesforce Lead record. Used by `lead-routing-rule-analyzer`.
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| lead_id | string | yes | unique identifier |
+| source | string | yes | one of: Web, Event, Referral, Outbound, Partner |
+| created_date | string | yes | ISO date |
+| assigned_rep | string | no | rep display name; null for orphaned leads (a real signal) |
+| assignment_date | string | no | ISO date; null if orphaned |
+| first_touch_date | string | no | ISO date; null if never touched |
+| status | string | yes | one of: Open, Working, Nurturing, Qualified, Disqualified, Converted |
+| territory | string | no | e.g., NAMER-East, EMEA, APAC |
+| segment | string | no | Enterprise / Mid-Market / Commercial |
+| converted | boolean | yes | |
+
+Same canary and CSV-comment conventions as activities.
 
 ## Field mapping from Salesforce
 
