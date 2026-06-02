@@ -4,17 +4,19 @@
 
 ## What this is
 
-Four Agent Skills that encode practitioner-level RevOps judgment as executable instructions Claude can follow. Each skill produces an executive-ready deliverable from a single prompt.
+Six Agent Skills that encode practitioner-level RevOps judgment as executable instructions Claude can follow. Each skill produces an executive-ready deliverable from a single prompt.
 
-| Skill | Output | Status |
-|---|---|---|
-| [salesforce-revops-audit](skills/salesforce-revops-audit/) | Graded health report (A through F) across pipeline health, data quality, forecast hygiene, deal integrity, and process integrity, with a prioritized remediation queue | shipped |
-| [forecast-call-prep](skills/forecast-call-prep/) | Weekly forecast call memo with variance, risks, and recommended position | shipped |
-| [pipeline-hygiene-audit](skills/pipeline-hygiene-audit/) | Per-rep hygiene punchlist with severity-ranked issues | shipped |
-| [deal-investigator](skills/deal-investigator/) | Structured deal review for a single opportunity, with risk indicators and a recommendation | shipped |
-| activity-capture-diagnostic | Einstein Activity Capture and Outreach sync diagnostic with per-rep capture rates | planned |
-| lead-routing-rule-analyzer | LeanData and Salesforce Assignment Rules diagnostic | planned |
-| comp-plan-stress-test | Comp plan analyzer with historical attainment overlay | planned |
+| Skill | Output | Tier | Status |
+|---|---|---|---|
+| [salesforce-revops-audit](skills/salesforce-revops-audit/) | Graded health report (A through F) across pipeline health, data quality, forecast hygiene, deal integrity, and process integrity, with a prioritized remediation queue | audit | shipped (v0.1) |
+| [forecast-call-prep](skills/forecast-call-prep/) | Weekly forecast call memo with variance, risks, and recommended position | remediation | shipped (v0.1) |
+| [pipeline-hygiene-audit](skills/pipeline-hygiene-audit/) | Per-rep hygiene punchlist with severity-ranked issues | remediation | shipped (v0.1) |
+| [deal-investigator](skills/deal-investigator/) | Structured deal review for a single opportunity, with risk indicators and a recommendation | remediation | shipped (v0.1) |
+| [activity-capture-diagnostic](skills/activity-capture-diagnostic/) | Graded A through F activity capture report with per-rep capture rates, under-loggers, phantom-progression opps, and advisory next steps | diagnostic | shipped (v0.2) |
+| [lead-routing-rule-analyzer](skills/lead-routing-rule-analyzer/) | Graded A through F lead routing report with speed-to-lead, orphans, distribution balance, and routing leakage | diagnostic | shipped (v0.2) |
+| comp-plan-stress-test | Comp plan analyzer with historical attainment overlay | remediation | planned (v0.3) |
+
+As of v0.2, every skill discerns column mappings at runtime by reading the catalog in [`docs/column_mapping.md`](docs/column_mapping.md). You can drop a raw Salesforce export with custom field names (`Total_Contract_Value__c`, `Stage_Name_Picklist`, etc.) into `data/` or `my_data/` and the skills will figure out the mapping without you renaming columns first. See [`CHANGELOG.md`](CHANGELOG.md) for the full v0.2 release notes.
 
 ## Where to start
 
@@ -72,17 +74,19 @@ Every skill in this repo follows the same rules:
 The repo includes [Northwind Cloud](data/), a synthetic Series C SaaS company with:
 
 - 10 sales reps with varied calibration profiles (sandbaggers, optimists, well-calibrated, wildcards)
-- 242 opportunities across realistic stage distribution
+- 251 opportunities across realistic stage distribution
 - 12 weeks of forecast submission history per rep
+- 144 Salesforce-style Task and Event activity records with planted under-loggers and phantom-progression opportunities (added in v0.2)
+- 180 Salesforce-style Lead records with planted orphans, SLA violations, distribution imbalance, and routing leakage (added in v0.2)
 - Intentional hygiene problems: stale activity, missing next steps, unrealistic close dates
 
-Run `python data/generate_synthetic_data.py` to regenerate with the same seed. The dataset is deterministic.
+Run `python data/generate_synthetic_data.py` to regenerate with the same seed. The dataset is deterministic. The v0.2 activity and lead files include a canary GUID per file marking them as synthetic demo data.
 
 ## Roadmap
 
 - **v0.1** (shipped): salesforce-revops-audit, forecast-call-prep, pipeline-hygiene-audit, deal-investigator
-- **v0.2**: activity-capture-diagnostic, lead-routing-rule-analyzer
-- **v0.3**: comp-plan-stress-test, compensation-dispute-investigator
+- **v0.2** (shipped): activity-capture-diagnostic, lead-routing-rule-analyzer, runtime column-mapping layer, expanded synthetic dataset (activities and leads)
+- **v0.3**: comp-plan-stress-test, compensation-dispute-investigator, process-integrity-audit
 - **v1.0**: All planned skills + companion evaluation suite ([RevOpsEval](https://revopseval.com))
 
 ## Contributing

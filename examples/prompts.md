@@ -54,6 +54,26 @@ Replace `[OPP_ID]` with the opportunity identifier (e.g., `opp_0029` in the bund
 
 Output: a structured deal memo answering the five questions a CRO would ask in a deal review, with a recommendation of Commit / BestCase / Pipeline / Omit.
 
+## Diagnosing activity capture (v0.2)
+
+For surfacing under-loggers, phantom-progression deals, and the correlation between activity volume and win rate:
+
+```
+Read skills/activity-capture-diagnostic/SKILL.md and follow its instructions exactly. Use the synthetic data in the data/ directory. Today's date is [TODAY]. Produce the activity capture diagnostic report.
+```
+
+Output: a graded A through F report with per-rep activity counts, phantom-progression opportunities by ID, and an advisory "What to do this week" section.
+
+## Diagnosing lead routing (v0.2)
+
+For speed-to-lead, orphaned leads, distribution balance, and routing leakage:
+
+```
+Read skills/lead-routing-rule-analyzer/SKILL.md and follow its instructions exactly. Use the synthetic data in the data/ directory. Today's date is [TODAY]. Produce the lead routing diagnostic report.
+```
+
+Output: a graded A through F report with SLA-breached leads by ID, orphaned leads by source, and an advisory "What to do this week" section.
+
 ## Using your own Salesforce data
 
 By default the prompts above point at `data/` (the bundled synthetic Northwind Cloud dataset). To use your own data, see [`bring_your_own_data.md`](bring_your_own_data.md) for the export instructions, then change the prompt to point at your data directory:
